@@ -11,7 +11,8 @@ import MyTasksPage from './pages/MyTasksPage';
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      {/* basename из BASE_URL: приложение работает и из корня домена, и из подкаталога */}
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route
