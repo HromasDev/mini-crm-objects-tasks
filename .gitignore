@@ -1,0 +1,14 @@
+node_modules/
+dist/
+
+# Секреты: env-файлы не попадают в репозиторий
+.env
+.env.*
+!.env.example
+
+.DS_Store
+*.log
+
+# Локальный stage для деплоя в ZCode Sites
+.zcode-site/
+.zcode-site.json
