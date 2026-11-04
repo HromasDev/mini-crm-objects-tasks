@@ -12,3 +12,6 @@ dist/
 # Локальный stage для деплоя в ZCode Sites
 .zcode-site/
 .zcode-site.json
+
+.vercel
+.env*
