@@ -329,7 +329,8 @@ export default function TaskCardPage() {
         }}
       >
         <Typography.Paragraph type="secondary">
-          Задача вернётся исполнителю в статус «В работе». Комментарий обязателен.
+          Задача перейдёт в статус «На доработке». После исправлений исполнитель сможет вернуть её
+          в работу. Комментарий обязателен.
         </Typography.Paragraph>
         <Input.TextArea
           rows={4}

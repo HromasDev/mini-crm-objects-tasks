@@ -38,7 +38,9 @@ npm run dev
 
 1. **Проект.** [supabase.com](https://supabase.com) → New project (бесплатный тариф).
 2. **Схема.** SQL Editor → New query → вставить содержимое
-   `supabase/migrations/0001_init.sql` → Run. Затем так же `supabase/migrations/0002_rls.sql`.
+   `supabase/migrations/0001_init.sql` → Run. Затем так же по порядку выполнить
+   `0002_rls.sql` и `0003_hardening.sql`.
+   Если первые две миграции уже выполнены, достаточно выполнить только `0003_hardening.sql`.
 3. **Пользователи.** Authentication → Users → Add user: создать три записи
    с галочкой **Auto Confirm User** — `manager@crm.test`, `worker1@crm.test`,
    `worker2@crm.test` и паролями. Профиль каждому создаст триггер автоматически.
@@ -115,9 +117,10 @@ curl -s -X POST "https://ВАШ-ПРОЕКТ.supabase.co/rest/v1/task_status_his
 ## Структура репозитория
 
 ```
-supabase/migrations/0001_init.sql  — таблицы, функции, триггеры (матрица переходов)
-supabase/migrations/0002_rls.sql   — RLS-политики, REVOKE на журнал
-supabase/seed.sql                  — роли, объекты, задачи, история (демо)
+supabase/migrations/0001_init.sql       — таблицы, функции, триггеры (матрица переходов)
+supabase/migrations/0002_rls.sql        — RLS-политики, REVOKE на журнал
+supabase/migrations/0003_hardening.sql  — строгий запрет прямой смены статуса, проверка роли исполнителя
+supabase/seed.sql                       — роли, объекты, задачи, история (демо)
 src/
   lib/        — клиент Supabase, типы, матрица действий (зеркало правил для UI)
   context/    — сессия и профиль пользователя
